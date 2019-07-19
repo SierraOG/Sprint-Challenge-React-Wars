@@ -22,34 +22,36 @@ const SubTitle = styled.p`
 `
 
 function CharacterCard({character}) {
-    const [hometown, setHometown] = useState(character.homeworld)
-    const [starships, setStarships] = useState('')
-    const starshipsArray = character.starships
-    useEffect(() =>{
-        axios.get(hometown)
-        .then( data => {
-          setHometown(data.data.name)
-        })
-        .catch(error=>{
-          console.log('error')
-        })
-        starshipsArray.forEach((ship) => {
-            axios.get(ship)
-            .then( data => {
-                setStarships(data.data.name)
-            })
-            .catch(error => {console.log('error')})
-        })
-    }, [])
+    // const [hometown, setHometown] = useState(character.homeworld)
+    // const [starships, setStarships] = useState('')
+    // const starshipsArray = character.starships
+    // useEffect(() =>{
+    //     axios.get(hometown)
+    //     .then( data => {
+    //       setHometown(data.data.name)
+    //     })
+    //     .catch(error=>{
+    //       console.log('error')
+    //     })
+    //     // starshipsArray.forEach((ship) => {
+    //     //     axios.get(ship)
+    //     //     .then( data => {
+    //     //         setStarships([ data.data.name]);
+    //     //     })
+    //     //     .catch(error => {console.log('error')})
+    //     // })
+    //     // console.log(starships)
+    // }, [])
     return(
     <Card>
         <Name>{character.name}</Name>
-        <SubTitle>{hometown}</SubTitle>
+        {/* <SubTitle>{hometown}</SubTitle> */}
         <p>Description: </p>
         <p>Skin color: {character.skin_color}</p>
         <p>Height: {character.height} cm</p>
         <p>Mass: {character.mass} kg</p>
-        <p>{starships !== '' ? `Starships: ${starships}` : ''}</p>
+        {/* <p>Starships:</p>
+        {/* <p>{starships}</p> */} 
     </Card>
     )
 }
